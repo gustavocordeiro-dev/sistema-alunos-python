@@ -12,8 +12,8 @@ def cadastrar_aluno():
         return 
     
     for aluno in alunos:
-        identificacao += 1
-
+        identificacao = len(alunos) + 1
+        
     aluno = {
         "nome" : nome,
         "idade" : idade,
@@ -97,7 +97,7 @@ while True:
     print("5 - Editar aluno")
     print("6 - Sair\n")
 
-    try : # Aqui onde eu esclho as opçoes de cadastro
+    try : # Aqui onde eu escolho as opçoes de cadastro
         numero = int(input("Escolha alguma opção : "))
     except ValueError:
         print("Digite Apenas Números Aqui.")
