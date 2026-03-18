@@ -1,19 +1,20 @@
 alunos = []
 
+def dados_do_aluno(): #Aqui eu pretendo diminuir mais o código na parte de mostrar os dados
+
+    ...
+
 def cadastrar_aluno():
 
-    identificacao = 0
-    print(f"\nDados do aluno {len(alunos) + 1} : ")    
+    identificacao = len(alunos) + 1
+    print(f"\nDados do aluno {len(alunos) + 1}")    
     nome = input("Digite o nome do aluno : ").strip().title()
     try:    
         idade = int(input("Digite a idade do aluno : "))
     except ValueError:
-        print("Digite Apenas a idades aqui.")
+        print("Digite Apenas a idade aqui.")
         return 
     
-    for aluno in alunos:
-        identificacao = len(alunos) + 1
-        
     aluno = {
         "nome" : nome,
         "idade" : idade,
@@ -33,7 +34,7 @@ def listar_alunos():
         print(f"Aluno {cont} ")
         print(f"Nome : ",aluno["nome"])
         print(f"Idade : ",aluno["idade"])
-        print(f"Identificação : ",aluno["id"])
+        print(f"Sua identificação é unica : ",aluno["id"])
         print()
     print(f"Total de alunos cadastrados : {len(alunos)}")
 
@@ -53,13 +54,14 @@ def encontrar_aluno():
         return
     for aluno in alunos:
         if aluno["nome"] == buscar_aluno:
-            print("O aluno esta na lista")
+            print("O aluno está na lista")
             print("id do aluno :", aluno["id"])
             return
     print("O aluno não está na lista")
 
-def editar_aluno(): # Tenho Que mexer aqui, arrumar try except ...
-    edicao = ("Digite o nome do aluno que deseja fazer a edição : ")
+def editar_aluno(): # Tenho Que Arrumar alguns bugs aqui e melhorar o código.
+    edicao = input("Digite o nome do aluno que deseja fazer a edição : ").strip().title()
+
     for aluno in alunos:
         if edicao == aluno :
             print("Aluno encontrado.")
@@ -70,17 +72,21 @@ def editar_aluno(): # Tenho Que mexer aqui, arrumar try except ...
 
             desejo = input("Deseja editar qual dado? : ").strip().title()
             if desejo == "Nome" :
-                edicao_nome = input("Digite o novo nome do aluno após edição :")
+                edicao_nome = input("Digite o novo nome do aluno : ")
                 aluno["nome"] = edicao_nome
 
-            if desejo == "Idade" :
+            elif desejo == "Idade" :
                 edicao_idade = int(input("Digite a nova idade do aluno : "))
                 aluno["idade"] = edicao_idade
 
             if desejo == "Id" :
-                print("Este dado é apenas alterado quando um aluno sai da lista.")
+                print("Este dado não é possivel de ser alterado, cada aluno tem o seu e é unico.")
     
             print("Dados do aluno atualizado.")
+            return
+        
+        print("Este aluno não está cadastrado.")
+        
 
 def finalizar_programa():
     print("Obrigado.")
