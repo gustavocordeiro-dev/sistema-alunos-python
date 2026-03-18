@@ -24,14 +24,14 @@ def cadastrar_aluno():
     return 
         
 def listar_alunos():
-    cont = 0
+    contador = 0
     if len(alunos) == 0:
         print("Não há alunos na lista.") 
         return
     for aluno in alunos:  
-        cont += 1 
+        contador += 1 
         print()
-        print(f"Aluno {cont} ")
+        print(f"Aluno {contador} ")
         print(f"Nome : ",aluno["nome"])
         print(f"Idade : ",aluno["idade"])
         print(f"Sua identificação é unica : ",aluno["id"])
@@ -44,12 +44,12 @@ def remover_aluno():
         print("Não há alunos na lista para remover.")
         return
     
-    remover = input("Digite o nome e do aluno : ").strip().title()
+    remover_nome = input("Digite o nome e do aluno : ").strip().title()
 
     for aluno in alunos:
-        if aluno["nome"] == remover:
+        if aluno["nome"] == remover_nome:
             alunos.remove(aluno)   
-            print("Aluno removido, id :", aluno["id"])
+            print("Aluno removido, Identificação :", aluno["id"])
             return
     print("Aluno não encontrado." )
 
@@ -68,37 +68,37 @@ def encontrar_aluno():
             return
     print("O aluno não está na lista")
 
-def editar_aluno(): # Tenho Que Arrumar alguns bugs aqui e melhorar o código.
+def editar_aluno(): 
 
     if len(alunos) == 0:
             print("Não há alunos na lista.")
             return
     
-    edicao = input("Digite o nome do aluno que deseja fazer a edição : ").strip().title()
+    editar_dados = input("Digite o nome do aluno que deseja fazer a edição : ").strip().title()
 
     for aluno in alunos:
 
-        if edicao == aluno["nome"] :
+        if editar_dados == aluno["nome"] :
             print("Aluno encontrado.")
             print("\nDados do aluno :")
             print("Nome :", aluno["nome"])
             print("Idade :", aluno["idade"])
             print("Id :", aluno["id"])
 
-            desejo = input("Deseja editar qual dado ? : ").strip().title()
-            if desejo == "Nome" :
-                edicao_nome = input("Digite o novo nome do aluno : ")
-                aluno["nome"] = edicao_nome
+            mudar = input("Deseja editar qual dado ? : ").strip().title()
+            if mudar == "Nome" :
+                mudar_nome = input("Digite o novo nome do aluno : ")
+                aluno["nome"] = mudar_nome
                 print("Dados do aluno atualizado.")
                 return
 
-            elif desejo == "Idade" :
-                edicao_idade = int(input("Digite a nova idade do aluno : "))
-                aluno["idade"] = edicao_idade
+            elif mudar == "Idade" :
+                mudar_idade = int(input("Digite a nova idade do aluno : "))
+                aluno["idade"] = mudar_idade
                 print("Dados do aluno atualizado.")
                 return
 
-            if desejo == "Id" :
+            if mudar == "Id" :
                 print("Este dado não é possivel de ser alterado, cada aluno tem o seu e é unico.")
                 return
     print("Aluno não encontrado, certifique-se que digitou corretamente.")
