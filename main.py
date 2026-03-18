@@ -26,7 +26,7 @@ def cadastrar_aluno():
 def listar_alunos():
     cont = 0
     if len(alunos) == 0:
-        print("Não há alunos para listar.") 
+        print("Não há alunos na lista.") 
         return
     for aluno in alunos:  
         cont += 1 
@@ -39,7 +39,13 @@ def listar_alunos():
     print(f"Total de alunos cadastrados : {len(alunos)}")
 
 def remover_aluno():
+
+    if len(alunos) == 0:
+        print("Não há alunos na lista para remover.")
+        return
+    
     remover = input("Digite o nome e do aluno : ").strip().title()
+
     for aluno in alunos:
         if aluno["nome"] == remover:
             alunos.remove(aluno)   
@@ -48,10 +54,13 @@ def remover_aluno():
     print("Aluno não encontrado." )
 
 def encontrar_aluno():
-    buscar_aluno = input("Digite o nome do aluno que você deseja buscar : ").strip().title()
+
     if len(alunos) == 0:
-        print("Não há alunos para listar.")
-        return
+            print("Não há alunos na lista.")
+            return
+    
+    buscar_aluno = input("Digite o nome do aluno que você deseja buscar : ").strip().title()
+    
     for aluno in alunos:
         if aluno["nome"] == buscar_aluno:
             print("O aluno está na lista")
@@ -60,39 +69,47 @@ def encontrar_aluno():
     print("O aluno não está na lista")
 
 def editar_aluno(): # Tenho Que Arrumar alguns bugs aqui e melhorar o código.
+
+    if len(alunos) == 0:
+            print("Não há alunos na lista.")
+            return
+    
     edicao = input("Digite o nome do aluno que deseja fazer a edição : ").strip().title()
 
     for aluno in alunos:
-        if edicao == aluno :
+
+        if edicao == aluno["nome"] :
             print("Aluno encontrado.")
-            print("Dados do aluno :")
+            print("\nDados do aluno :")
             print("Nome :", aluno["nome"])
             print("Idade :", aluno["idade"])
             print("Id :", aluno["id"])
 
-            desejo = input("Deseja editar qual dado? : ").strip().title()
+            desejo = input("Deseja editar qual dado ? : ").strip().title()
             if desejo == "Nome" :
                 edicao_nome = input("Digite o novo nome do aluno : ")
                 aluno["nome"] = edicao_nome
+                print("Dados do aluno atualizado.")
+                return
 
             elif desejo == "Idade" :
                 edicao_idade = int(input("Digite a nova idade do aluno : "))
                 aluno["idade"] = edicao_idade
+                print("Dados do aluno atualizado.")
+                return
 
             if desejo == "Id" :
                 print("Este dado não é possivel de ser alterado, cada aluno tem o seu e é unico.")
-    
-            print("Dados do aluno atualizado.")
-            return
-        
-        print("Este aluno não está cadastrado.")
+                return
+    print("Aluno não encontrado, certifique-se que digitou corretamente.")
+    return
         
 
 def finalizar_programa():
     print("Obrigado.")
          
 def opcao_invalida():
-    print("Digite alguma das opçoes")
+    print("Opção inválida, digite alguma das opções.")
 
 while True:
  
