@@ -1,9 +1,5 @@
 alunos = []
 
-def dados_do_aluno(): #Aqui eu pretendo diminuir mais o código na parte de mostrar os dados
-
-    ...
-
 def cadastrar_aluno():
 
     identificacao = len(alunos) + 1
