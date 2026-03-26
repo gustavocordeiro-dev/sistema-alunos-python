@@ -89,7 +89,11 @@ def editar_aluno():
                 return
 
             elif mudar == "Idade" :
-                mudar_idade = int(input("Digite a nova idade do aluno : "))
+                try:
+                    mudar_idade = int(input("Digite a nova idade do aluno : "))
+                except ValueError:
+                    print("Digite apenas números.")
+                    return
                 aluno["idade"] = mudar_idade
                 print("Dados do aluno atualizado.")
                 return
