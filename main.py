@@ -70,25 +70,38 @@ def editar_aluno():
             print("Não há alunos na lista.")
             return
     
-    editar_dados = input("Digite o nome do aluno que deseja fazer a edição : ").strip().title()
-
+    try:
+        editar_dados = int(input("Digite a identificação do aluno que deseja fazer a edição : "))
+    except ValueError:
+        print("Certifique-se de ter digitado os dados corretamente.")
+        return
+    
     for aluno in alunos:
 
-        if editar_dados == aluno["nome"] :
+        if editar_dados == aluno["id"] :
             print("Aluno encontrado.")
             print("\nDados do aluno :")
             print("Nome :", aluno["nome"])
             print("Idade :", aluno["idade"])
-            print("Id :", aluno["id"])
+            print("Identificação :", aluno["id"])
 
-            mudar = input("Deseja editar qual dado ? : ").strip().title()
-            if mudar == "Nome" :
+            print("\nDeseja editar : ")
+            print("1 - Nome")
+            print("2 - Idade\n")
+
+            try:
+                mudar = int(input(""))
+            except ValueError:
+                print("Certifique-se de ter digitado os dados corretamente.")
+                return
+            
+            if mudar == 1 :
                 mudar_nome = input("Digite o novo nome do aluno : ")
                 aluno["nome"] = mudar_nome
                 print("Dados do aluno atualizado.")
                 return
 
-            elif mudar == "Idade" :
+            elif mudar == 2 :
                 try:
                     mudar_idade = int(input("Digite a nova idade do aluno : "))
                 except ValueError:
@@ -98,9 +111,6 @@ def editar_aluno():
                 print("Dados do aluno atualizado.")
                 return
 
-            if mudar == "Id" :
-                print("Este dado não é possivel de ser alterado, cada aluno tem o seu e é unico.")
-                return
     print("Aluno não encontrado, certifique-se que digitou corretamente.")
     return
         
