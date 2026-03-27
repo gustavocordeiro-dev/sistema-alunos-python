@@ -1,5 +1,13 @@
 alunos = []
 
+def dados_aluno(): 
+
+    for aluno in alunos:
+        if aluno == alunos["id"]:
+            print("Nome :", aluno["nome"])
+            print("Idade :", aluno["idade"])
+            print("Identificação :", aluno["id"])
+
 def cadastrar_aluno():
 
     identificacao = len(alunos) + 1
@@ -20,14 +28,12 @@ def cadastrar_aluno():
     return 
         
 def listar_alunos():
-    contador = 0
+
     if len(alunos) == 0:
         print("Não há alunos na lista.") 
         return
     for aluno in alunos:  
-        contador += 1 
-        print()
-        print(f"Aluno {contador} ")
+        print(f"\nAluno ", aluno["id"])
         print(f"Nome : ",aluno["nome"])
         print(f"Idade : ",aluno["idade"])
         print(f"Sua identificação é unica : ",aluno["id"])
@@ -39,13 +45,18 @@ def remover_aluno():
     if len(alunos) == 0:
         print("Não há alunos na lista para remover.")
         return
-    
-    remover_nome = input("Digite o nome e do aluno : ").strip().title()
+    try:
+        remover_nome = int(input("Digite a identificação do aluno : "))
+    except ValueError:
+        print("Certifique-se de ter digitado os dados corretamente.")
+        return
 
     for aluno in alunos:
-        if aluno["nome"] == remover_nome:
+        if aluno["id"] == remover_nome:
+            print("Aluno removido.")
+            print("Dados do aluno :\n")
+            dados_aluno()
             alunos.remove(aluno)   
-            print("Aluno removido, Identificação :", aluno["id"])
             return
     print("Aluno não encontrado." )
 
@@ -55,12 +66,13 @@ def encontrar_aluno():
             print("Não há alunos na lista.")
             return
     
-    buscar_aluno = input("Digite o nome do aluno que você deseja buscar : ").strip().title()
+    buscar_aluno = int(input("Digite a identificação do aluno que você deseja buscar : "))
     
     for aluno in alunos:
-        if aluno["nome"] == buscar_aluno:
+        if aluno["id"] == buscar_aluno:
             print("O aluno está na lista")
-            print("id do aluno :", aluno["id"])
+            print("Dados do Aluno :\n")
+            dados_aluno()
             return
     print("O aluno não está na lista")
 
