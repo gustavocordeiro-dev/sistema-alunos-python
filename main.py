@@ -1,12 +1,9 @@
 alunos = []
 
-def dados_aluno(): 
-
-    for aluno in alunos:
-        if aluno == alunos["id"]:
-            print("Nome :", aluno["nome"])
-            print("Idade :", aluno["idade"])
-            print("Identificação :", aluno["id"])
+def dados_aluno(aluno): 
+        print("Nome :", aluno["nome"])
+        print("Idade :", aluno["idade"])
+        print("Identificação :", aluno["id"])
 
 def cadastrar_aluno():
 
@@ -133,6 +130,7 @@ def finalizar_programa():
 def opcao_invalida():
     print("Opção inválida, digite alguma das opções.")
 
+print("\n------SISTEMA CADASTRO DE ALUNOS------\n")
 while True:
  
     print("\n1 - Cadastrar alunos")
