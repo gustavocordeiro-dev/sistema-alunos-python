@@ -30,7 +30,7 @@ def listar_alunos():
         print("Não há alunos na lista.") 
         return
     for aluno in alunos:  
-        print(f"\nAluno ", aluno["id"])
+        print(f"\n------Aluno {aluno['id']}------")
         print(f"Nome : ",aluno["nome"])
         print(f"Idade : ",aluno["idade"])
         print(f"Sua identificação é unica : ",aluno["id"])
