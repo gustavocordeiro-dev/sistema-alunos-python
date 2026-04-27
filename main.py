@@ -1,9 +1,10 @@
 alunos = []
 
 def dados_aluno(aluno): 
-        print("Nome :", aluno["nome"])
-        print("Idade :", aluno["idade"])
-        print("Identificação :", aluno["id"])
+        for aluno in alunos:
+            print("Nome :", aluno["nome"])
+            print("Idade :", aluno["idade"])
+            print("Identificação :", aluno["id"])
 
 def cadastrar_aluno():
 
@@ -52,7 +53,7 @@ def remover_aluno():
         if aluno["id"] == remover_nome:
             print("Aluno removido.")
             print("Dados do aluno :\n")
-            dados_aluno()
+            dados_aluno(aluno)
             alunos.remove(aluno)   
             return
     print("Aluno não encontrado." )
